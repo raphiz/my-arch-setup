@@ -1,5 +1,6 @@
 # Things to do...
 
+- Finalise snapshot timeline of user home
 - Fix liniting errors (systemd mask and vscode comand) (`ansible-lint sites.yml`)
 - Enhance privacy / security
   - [encrypted DNS](https://wiki.archlinux.org/index.php/Dnscrypt-proxy)
