@@ -1,0 +1,14 @@
+- name: Install Bluez and dependencies
+  pacman:
+    name:
+      - bluez
+      - bluez-utils
+      - blueman
+      - pulseaudio-bluetooth
+    state: present
+
+- name: Adapt polkit for blueman
+  copy: src=81-blueman.rules dest=/etc/polkit-1/rules.d/81-blueman.rules
+
+- name: Enable bluetooth service
+  service: name=bluetooth.service enabled=yes

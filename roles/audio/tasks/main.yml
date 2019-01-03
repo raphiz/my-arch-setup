@@ -1,0 +1,10 @@
+- name: Install pulseaudio and alsa packages
+  pacman:
+    name:
+      - pulseaudio
+      - pulseaudio-alsa
+      - pavucontrol
+    state: present
+
+- name: Disable PC Speaker
+  copy: src=nobeep.conf dest=/etc/modprobe.d/nobeep.conf

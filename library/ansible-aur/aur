@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+# MIT Licensed (MIT)
+# Original Source: https://github.com/pigmonkey/ansible-aur/blob/master/aur
+#
+# Copyright (c) 2014 Austin Hyde
+# Adaptions 2018 by Raphael Zimmermann
+
+import os
+import pwd
+import shutil
+import urllib.request
+import json
+from ansible.module_utils.basic import AnsibleModule
+
+
+def pacman_in_path(module):
+    """
+    Determine if pacman is available.
+    """
+    rc, stdout, stderr = module.run_command('which pacman', check_rc=False)
+    return rc == 0
+
+
+def package_installed(module, pkg):
+    """
+    Determine if a package is already installed.
+    """
+    rc, stdout, stderr = module.run_command(
+        'pacman -Q %s' % pkg, check_rc=False)
+    return rc == 0
+
+
+def check_package(module, pkg):
+    """
+    Inform the user what would change if the module were run.
+    """
+    if package_installed(module, pkg):
+        module.exit_json(
+            changed=False, msg='Package %s is already installed' % (pkg))
+    else:
+        module.exit_json(
+            changed=True, msg='Package %s would be installed' % (pkg))
+
+
+def download_package(module, base_pkg, pkg_dir, hash, user):
+    """
+    Download the specified base package.
+    """
+
+    os.mkdir(pkg_dir)
+    os.chmod(pkg_dir, 0o777)
+    os.chdir(pkg_dir)
+
+    rc, stdout, stderr = module.run_command(
+        'sudo -u %s git clone https://aur.archlinux.org/%s.git .' % (
+            user, base_pkg),
+        check_rc=False)
+    if rc != 0:
+        module.fail_json(
+            msg='failed to clone repo %s, because: %s' % (base_pkg, stderr))
+
+    rc, stdout, stderr = module.run_command(
+        'sudo -u %s git checkout %s' % (user, hash), check_rc=False)
+    if rc != 0:
+        module.fail_json(
+            msg='failed to clone repo %s, because: %s' % (base_pkg, stderr))
+
+
+def install_package(module, pkg, pkg_dir, user):
+    """
+    Install the specified packages via makepkg.
+    """
+    os.chdir(pkg_dir)
+
+    # Get Package information using RPC
+    with urllib.request.urlopen("https://aur.archlinux.org/rpc/?v=5&type=info&arg[]=%s" % pkg) as url:
+        data = json.loads(url.read().decode())['results'][0]
+        makedepends = ' '.join(
+            data['MakeDepends'] if 'MakeDepends' in data else [])
+        depends = ' '.join(data['Depends'] if 'Depends' in data else [])
+
+    # Install deps and makedeps
+    rc, stdout, stderr = module.run_command('pacman -Sy --noconfirm --needed --asdeps %s %s' % (
+        depends, makedepends), check_rc=False, use_unsafe_shell=True)
+    if rc != 0:
+        module.fail_json(
+            msg='failed to install makedepends and depends of package %s, because: %s' % (pkg, stderr))
+
+    # Attempt to build the directory.
+    rc, stdout, stderr = module.run_command('sudo -u %s PKGEXT=".pkg.tar" makepkg -cf --noconfirm --noprogressbar' % (
+        user), check_rc=False)
+    if rc != 0:
+        module.fail_json(
+            msg='failed to build package %s, because: %s' % (pkg, stderr))
+
+    # If the package was successfully built, install it.
+    rc, stdout, stderr = module.run_command(
+        'pacman -U --noconfirm *.pkg.tar*', check_rc=False, use_unsafe_shell=True)
+    if rc != 0:
+        module.fail_json(
+            msg='failed to install package %s, because: %s' % (pkg, stderr))
+
+
+def cleanup_downloads(pkg, pkg_dir):
+    if os.path.exists(pkg_dir):
+        shutil.rmtree(pkg_dir)
+
+
+def main():
+    module = AnsibleModule(
+        argument_spec=dict(
+            name=dict(required=True),
+            base_pkg=dict(),
+            user=dict(required=True),
+            hash=dict(required=False),  # git commit hash (specific version)
+            dir=dict(),
+        ),
+        supports_check_mode=True
+    )
+
+    if not pacman_in_path(module):
+        module.fail_json(msg="could not locate pacman executable")
+
+    p = module.params
+    pkg = p['name']
+    base_pkg = p['base_pkg'] if p['base_pkg'] else pkg
+    hash = p['hash']
+    user = p['user']
+    dir = os.path.expanduser(p['dir']) if p['dir'] else '/tmp/'
+    pkg_dir = os.path.join(dir, base_pkg)
+
+    try:
+        pwd.getpwnam(user)
+    except KeyError:
+        module.fail_json(msg="user %s does not exist" % user)
+
+    if not os.path.exists(dir):
+        module.fail_json(msg="directory %s does not exist" % dir)
+
+    if module.check_mode:
+        check_package(module, pkg)
+
+    # If the package is already installed, we're done.
+    if package_installed(module, pkg):
+        module.exit_json(
+            changed=False, msg='Package %s is already installed' % pkg)
+
+    download_package(module, base_pkg, pkg_dir, hash, user)
+
+    install_package(module, pkg, pkg_dir, user)
+
+    cleanup_downloads(pkg, pkg_dir)
+
+    module.exit_json(changed=True, msg='Package %s installed' % pkg)
+
+
+main()

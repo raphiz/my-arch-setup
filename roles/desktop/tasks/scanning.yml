@@ -1,0 +1,6 @@
+- name: Install scanning utilities
+  pacman:
+    name:
+      - sane
+      - simple-scan
+    state: present

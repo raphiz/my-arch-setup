@@ -1,0 +1,101 @@
+# (Defined host vars (inventory))
+# hostname: temporary-hostname
+# hardware:
+#   disk_name: /dev/sdX
+# user:
+#   name: raphiz
+#   uid: 1000
+#   group: raphiz
+#   password: 12345
+#   password_salt: 12345
+# features:
+#  - resticTimer
+#  - cnijfilter2
+#  - openjdk
+#  - jdk8
+#  - virtualbox
+
+# Global packages
+base_packages:
+  - reflector
+  - vim
+  - git
+  - python
+  - python-pip
+  - openssh
+  - unzip
+  - zip
+
+desktop_apps:
+  base:
+    - firefox
+    - thunderbird
+    - notepadqq
+    - qpdfview
+    - libreoffice-fresh-de
+    - hunspell
+    - hunspell-de
+    - autojump
+    - keepassxc
+    - ntfs-3g
+    - jq
+  graphic:
+    - gimp
+    - inkscape
+    - imagemagick
+  media:
+    - vlc
+    - audacious
+  sytem:
+    - wget
+    - htop
+    - gparted
+    - sshfs
+    - shellcheck
+    - diffuse
+    - pacmatic
+
+desktop_apps_aur:
+  base:
+    - name: google-chrome
+      hash: a6256e208f72f7afd6f7a5815e66b2c426fe68e2
+    - name: ttf-ms-fonts
+      hash: ba83093fb7e7135736d0762cceff1c264b01719c
+
+# To update this list, use `code --list-extensions`
+vscode_extensions:
+  - DavidAnson.vscode-markdownlint
+  - PKief.material-icon-theme
+  - adamvoss.vscode-languagetool
+  - adamvoss.vscode-languagetool-de
+  - adamvoss.vscode-languagetool-en
+  - akamud.vscode-theme-onelight
+  - esbenp.prettier-vscode
+  - mikeburgh.xml-format
+  - octref.vetur
+  - coolbear.systemd-unit-file
+  - streetsidesoftware.code-spell-checker
+  - streetsidesoftware.code-spell-checker-german
+  - timonwong.shellcheck
+  - dhoeric.ansible-vault
+# - joaompinto.asciidoctor-vscode
+# - stayfool.vscode-asciidoc
+
+dotfiles: git@github.com:raphiz/dotfiles.git
+
+journal:
+  max_size: 500M
+
+base_fonts:
+  - terminus-font
+  - ttf-dejavu
+  - ttf-liberation
+  - gsfonts
+  - tex-gyre-fonts
+  - noto-fonts-emoji
+
+aur_fonts:
+  - name: ttf-google-fonts-opinionated-git
+    hash: eb09d72962f3565c5790023d8adf2aa2cb8d8cca
+  - name: ttf-symbola
+    hash: 441949ca0d1d44eacd2a258cbab42766655f1bf7

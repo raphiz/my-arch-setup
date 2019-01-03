@@ -1,0 +1,12 @@
+---
+- name: Install code
+  aur:
+    name: visual-studio-code-bin
+    hash: 22cb8db341fbbaa6774250b5e8a3a9dd6a9d6dfe
+    user: "{{ user.name }}"
+
+- name: Installing extensions
+  command: /usr/bin/code --install-extension {{ item }}
+  with_items: "{{ vscode_extensions }}"
+  become: yes
+  become_user: "{{ user.name }}"

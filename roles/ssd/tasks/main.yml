@@ -1,0 +1,13 @@
+---
+- name: Install hdparm
+  pacman: name=hdparm state=present
+
+- name: Check for TRIM support
+  shell: hdparm -I {{hardware.disk_name}} | grep TRIM
+  register: hdparm
+  ignore_errors: True
+  when: hardware.disk_name is defined
+
+- name: Enable weekly filesystem TRIM timer
+  service: name=fstrim.timer enabled=yes
+  when: "hdparm.rc == 0"

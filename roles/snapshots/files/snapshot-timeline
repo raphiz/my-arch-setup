@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -eu
+
+
+# TODO: Create directories: minutely (5), hourly (8), daily (3)
+# daily first time the day
+
+NOW=$(date '+%Y-%m-%d-%H-%M')
+
+btrfs subvolume snapshot -r "/home/" "/home/.snapshots/$NOW"
+
+TOO_OLD=$(date -d '30 minutes ago' '+%Y-%m-%d-%H-%M')
+
+for i in $(ls -A1 /home/.snapshots/); do
+    if [[ "$i" < "$TOO_OLD" ]]; then
+        echo "deleting old snapshot $i..."
+        btrfs subvolume delete "/home/.snapshots/$i"
+    fi
+done

@@ -1,0 +1,14 @@
+- name: Install VirtualBox and dependencies
+  pacman:
+    name:
+      - linux-headers
+      - qt4
+      - virtualbox
+      - virtualbox-guest-iso
+      - virtualbox-host-dkms
+    state: present
+  when: features is defined and "virtualbox" in features
+
+- name: Add the user to vboxusers group
+  user: name={{ user.name }} groups=vboxusers append=yes
+  when: features is defined and "virtualbox" in features

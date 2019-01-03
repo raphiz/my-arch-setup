@@ -1,0 +1,20 @@
+- name: Install Xorg
+  pacman: name=xorg-server state=present
+
+- name: Install Xinit
+  pacman: name=xorg-xinit state=present
+
+- name: Install xmodmap
+  pacman: name=xorg-xmodmap state=present
+
+- name: Install libinput
+  pacman: name=libinput state=present
+
+- name: Copy keyboard configuration file
+  copy: src=00-keyboard.conf dest=/etc/X11/xorg.conf.d/00-keyboard.conf
+
+- name: Copy touchpad configuration file
+  copy: src=01-touchpad.conf dest=/etc/X11/xorg.conf.d/01-touchpad.conf
+
+- name: Add user to video group
+  user: name={{ user.name }} groups=video append=yes

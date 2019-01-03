@@ -1,0 +1,29 @@
+- name: Install NetworkManager and dependencies
+  pacman:
+    name:
+      - networkmanager
+      - network-manager-applet
+    state: present
+
+- name: Install networkmanager-openvpn
+  pacman: name=networkmanager-openvpn state=present
+  when: features is defined and "openvpn" in features
+
+- name: Install Avahi (Zeroconf)
+  pacman:
+    name:
+      - nss-mdns
+      - avahi
+    state: present
+
+- name: Update Name Service Switch config
+  copy: src=nsswitch.conf dest=/etc/nsswitch.conf
+
+- name: Enable Avahi
+  service: name=avahi-daemon.service enabled=yes
+
+- name: Enable NetworkManager
+  service: name=NetworkManager.service enabled=yes
+
+- name: Enable NetworkManager dispatcher
+  service: name=NetworkManager-dispatcher.service enabled=yes

@@ -1,0 +1,42 @@
+- name: Install base desktop apps
+  pacman: name={{ desktop_apps.base }} state=present
+
+- name: Install graphic desktop apps
+  pacman: name={{ desktop_apps.graphic }} state=present
+
+- name: Install media desktop apps
+  pacman: name={{ desktop_apps.media }} state=present
+
+- name: Install sytem desktop apps
+  pacman: name={{ desktop_apps.sytem }} state=present
+
+- name: Install host specific apps
+  pacman: name={{ apps }} state=present
+  when: apps is defined
+
+- name: Install base desktop apps from aur
+  aur:
+    name: "{{ item.name }}"
+    hash: "{{ item.hash }}"
+    user: "{{ user.name }}"
+  with_items: "{{ desktop_apps_aur.base }}"
+
+- name: Install host specific apps from aur
+  aur:
+    name: "{{ item.name }}"
+    hash: "{{ item.hash }}"
+    user: "{{ user.name }}"
+  with_items: "{{ apps_aur }}"
+  when: apps_aur is defined
+
+- name: Installing inotify-tools
+  pacman: name=inotify-tools state=present
+
+- name: Increase number of watchers for inotify
+  copy: src=40-max-user-watches.conf dest=/etc/sysctl.d/40-max-user-watches.conf
+
+- name: Disable watchdog to increase performace
+  copy: src=50-disable_watchdog.conf dest=/etc/sysctl.d/50-disable_watchdog.conf
+
+- import_tasks: look_and_feel.yml
+- import_tasks: scanning.yml

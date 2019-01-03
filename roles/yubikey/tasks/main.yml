@@ -1,0 +1,3 @@
+---
+- name: Install yubikey u2f support
+  pacman: name=libu2f-host state=present

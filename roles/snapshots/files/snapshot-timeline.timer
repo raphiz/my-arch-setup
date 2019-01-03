@@ -1,0 +1,10 @@
+
+[Unit]
+Description=Timeline of snapshots for /home/
+
+[Timer]
+OnCalendar=minutely
+
+[Install]
+WantedBy=timers.target
+

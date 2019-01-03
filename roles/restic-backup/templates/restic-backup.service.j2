@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup user home to NFS
+
+[Service]
+Type=simple
+ExecStart=/home/{{ user.name }}/apps/backup/backup.bash
+
+[Install]
+WantedBy=default.target

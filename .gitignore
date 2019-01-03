@@ -1,0 +1,9 @@
+/*.tar.xz
+/*.tar.gz
+/pkg
+/src
+/yay
+/.mypy_cache
+/hosts
+*.retry
+

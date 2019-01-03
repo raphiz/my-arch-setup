@@ -1,0 +1,14 @@
+- name: Install openjdk
+  pacman: name=jdk10-openjdk state=present
+  when: features is defined and "openjdk" in features
+
+- name: Install openfx
+  pacman: name=java-openjfx state=present
+  when: features is defined and "openjdk" in features
+
+- name: Install oracle jdk
+  aur:
+    name: jdk8
+    hash: 978f746cbabbd1d228d28f2be1c75079fd33921a
+    user: "{{ user.name }}"
+  when: features is defined and "jdk8" in features

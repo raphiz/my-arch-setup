@@ -1,0 +1,24 @@
+- name: Install OpenVPN
+  pacman: name=openvpn state=present
+  when: features is defined and "openvpn" in features
+
+- name: Install whois
+  pacman: name=whois state=present
+
+- name: Install netcat
+  pacman: name=gnu-netcat state=present
+
+- name: Install nmap
+  pacman: name=nmap state=present
+
+- name: Install dnsutils
+  pacman: name=dnsutils state=present
+
+- name: Install tcpdump
+  pacman: name=tcpdump state=present
+
+- name: Install wireshark
+  pacman: name=wireshark-gtk state=present
+
+- name: Add user to wireshark group
+  user: name={{ user.name }} groups=wireshark append=yes

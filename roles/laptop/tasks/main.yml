@@ -1,0 +1,5 @@
+---
+- import_tasks: tlp.yml
+
+- name: Copy logind configuration file
+  copy: src=logind.conf dest=/etc/systemd/logind.conf

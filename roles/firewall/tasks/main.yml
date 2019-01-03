@@ -1,0 +1,24 @@
+---
+- name: Remove nftables configuration
+  file:
+    state: absent
+    path: /etc/nftables.conf
+
+- name: Install firewalld
+  pacman: name=firewalld state=present
+
+- name: Copy firewalld configuration file
+  copy: src=firewalld.conf dest=/etc/firewalld/firewalld.conf
+
+- name: Copy adjusted public firewalld zone
+  copy: src=zones/public.xml dest=/etc/firewalld/zones/public.xml
+
+- name: Copy adjusted work firewalld zone
+  copy: src=zones/work.xml dest=/etc/firewalld/zones/work.xml
+
+- name: enable service firewalld service and ensure it is not masked
+  systemd:
+    name: firewalld.service
+    enabled: yes
+    masked: no
+    state: restarted

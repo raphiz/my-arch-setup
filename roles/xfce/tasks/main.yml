@@ -1,0 +1,31 @@
+- name: Install xfce4 group
+  pacman: name=xfce4 state=present
+
+- name: Install additional xfce4 stuff
+  pacman:
+    name:
+      - xfce4-artwork
+      - thunar-archive-plugin
+      - thunar-media-tags-plugin
+      - tumbler
+      - ffmpegthumbnailer # for tumbler (meda files)
+      - libgsf # for tumbler (structured files)
+      - libopenraw # for tumbler (RAW files)
+      - xfce4-battery-plugin
+      - xfce4-clipman-plugin
+      - xfce4-datetime-plugin
+      - xfce4-mailwatch-plugin
+      - xfce4-notifyd
+      - xfce4-pulseaudio-plugin
+      - xfce4-screenshooter
+      - xfce4-taskmanager
+      - xfce4-time-out-plugin
+      - xfce4-whiskermenu-plugin
+      - xfce4-pulseaudio-plugin
+      - gnome-keyring
+      - gvfs
+      - gvfs-smb
+      - cifs-utils
+      - xarchiver
+      - viewnior
+    state: present

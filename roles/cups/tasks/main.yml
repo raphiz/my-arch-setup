@@ -1,0 +1,36 @@
+- name: Install CUPS and drivers
+  pacman:
+    name:
+      - ghostscript
+      - gsfonts
+      - cups
+      - gutenprint
+      - system-config-printer
+    state: present
+
+- name: Install canon cnijfilter2
+  aur:
+    name: cnijfilter2-mg7500
+    hash: 99ff5dd3616a98f2792423748bb3311343714ade
+    user: "{{ user.name }}"
+  when: features is defined and "cnijfilter2" in features
+
+- name: Add MG7500 printer
+  copy: src=Canon-MG7500.ppd dest=/etc/cups/ppd/Canon-MG7500.ppd
+  when: features is defined and "cnijfilter2" in features
+
+- name: Add a print admin group
+  group: name=printadmin state=present
+
+- name: Allow the print admin group to administer CUPS
+  lineinfile:
+    dest: /etc/cups/cups-files.conf
+    regexp: ^SystemGroup
+    state: present
+    line: "SystemGroup sys root printadmin"
+
+- name: Add the user to the print and print admin groups
+  user: name={{ user.name }} groups=printadmin,lp append=yes
+
+- name: Enable CUPS
+  service: name=org.cups.cupsd.service enabled=yes

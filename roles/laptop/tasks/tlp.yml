@@ -1,0 +1,23 @@
+- name: Install TLP
+  pacman:
+    name:
+      - x86_energy_perf_policy
+      - ethtool
+      - tlp
+      - tlp-rdw
+    state: present
+
+- name: Copy TLP configuration file
+  copy: src=tlp.conf dest=/etc/default/tlp
+
+- name: Mask systemd radio service
+  command: systemctl mask systemd-rfkill.service
+
+- name: Mask systemd radio socket
+  command: systemctl mask systemd-rfkill.socket
+
+- name: Enable TLP
+  service: name=tlp.service enabled=yes
+
+- name: Enable TLP sleep
+  service: name=tlp-sleep.service enabled=yes

@@ -1,0 +1,36 @@
+- name: Install Restic
+  pacman: name=restic state=present
+
+- name: Prepare systemd directories
+  file:
+    path: /home/{{ user.name }}/.config/systemd/user/default.target.wants/
+    state: directory
+    recurse: yes
+  become: yes
+  become_user: "{{ user.name }}"
+  when: features is defined and "resticTimer" in features
+
+- name: Add systemd backup service
+  template:
+    src: restic-backup.service.j2
+    dest: /home/{{ user.name }}/.config/systemd/user/restic-backup.service
+  become: yes
+  become_user: "{{ user.name }}"
+  when: features is defined and "resticTimer" in features
+
+- name: Add systemd backup timer
+  template:
+    src: restic-backup.timer.j2
+    dest: /home/{{ user.name }}/.config/systemd/user/restic-backup.timer
+  become: yes
+  become_user: "{{ user.name }}"
+  when: features is defined and "resticTimer" in features
+
+- name: Enable systemd backup timer
+  file:
+    src: /home/{{ user.name }}/.config/systemd/user/restic-backup.timer
+    dest: /home/{{ user.name }}/.config/systemd/user/timers.target.wants/restic-backup.timer
+    state: link
+  become: yes
+  become_user: "{{ user.name }}"
+  when: features is defined and "resticTimer" in features

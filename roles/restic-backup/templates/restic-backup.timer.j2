@@ -1,0 +1,12 @@
+[Unit]
+Description=Backup user home to NFS
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=4h
+Unit=restic-backup.service
+
+[Install]
+WantedBy=timers.target
