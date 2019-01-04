@@ -9,6 +9,10 @@
   pacman: name=networkmanager-openvpn state=present
   when: features is defined and "openvpn" in features
 
+- name: Install networkmanager-vpnc
+  pacman: name=networkmanager-vpnc state=present
+  when: features is defined and "vpnc" in features
+
 - name: Install Avahi (Zeroconf)
   pacman:
     name:
