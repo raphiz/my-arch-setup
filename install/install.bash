@@ -34,11 +34,6 @@ timedatectl set-timezone Europe/Zurich
 timedatectl set-ntp true
 
 
-echo "Wiping existing disk"
-cryptsetup open --type plain -d /dev/urandom "$DISK_NAME" to_be_wiped
-dd bs=4M if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
-cryptsetup close to_be_wiped
-
 echo "Preparing partitions"
 gdisk "$DISK_NAME" <<EOF
 2 # Create blank GPT

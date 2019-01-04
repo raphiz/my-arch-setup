@@ -38,6 +38,11 @@ wifi-menu
 pacman -S terminus-font
 setfont ter-u32b
 
+# Optional: Wipe your disk
+cryptsetup open --type plain -d /dev/urandom /dev/DISKNAME to_be_wiped
+dd bs=4M if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
+cryptsetup close to_be_wiped
+
 # Mount the installation data, eg. using a USB device:
 mkdir /tmp/installation
 mount /dev/sdXY /tmp/installation
