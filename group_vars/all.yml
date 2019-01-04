@@ -65,7 +65,6 @@ desktop_apps_aur:
 # To update this list, use `code --list-extensions`
 vscode_extensions:
   - DavidAnson.vscode-markdownlint
-  - PKief.material-icon-theme
   - adamvoss.vscode-languagetool
   - adamvoss.vscode-languagetool-de
   - adamvoss.vscode-languagetool-en
@@ -78,6 +77,7 @@ vscode_extensions:
   - streetsidesoftware.code-spell-checker-german
   - timonwong.shellcheck
   - dhoeric.ansible-vault
+  - vscoss.vscode-ansible
 # - joaompinto.asciidoctor-vscode
 # - stayfool.vscode-asciidoc
 
