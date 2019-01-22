@@ -8,10 +8,6 @@
   hostname: name={{ hostname }}
   when: hostname is defined
 
-- name: Add global gitconfig hostname
-  template: src=gitconfig.j2 dest=/etc/gitconfig
-  when: user.mail is defined
-
 - import_tasks: shell.yml
 - import_tasks: user.yml
 - import_tasks: sudo.yml
