@@ -25,6 +25,7 @@
       - gnome-keyring
       - gvfs
       - gvfs-smb
+      - gvfs-mtp
       - cifs-utils
       - xarchiver
       - viewnior
