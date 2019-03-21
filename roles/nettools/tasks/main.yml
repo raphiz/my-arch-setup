@@ -18,7 +18,7 @@
   pacman: name=tcpdump state=present
 
 - name: Install wireshark
-  pacman: name=wireshark-gtk state=present
+  pacman: name=wireshark-qt state=present
 
 - name: Add user to wireshark group
   user: name={{ user.name }} groups=wireshark append=yes
