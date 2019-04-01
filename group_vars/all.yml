@@ -81,6 +81,11 @@ vscode_extensions:
   - vscoss.vscode-ansible
   - CoenraadS.bracket-pair-colorizer-2
   - wmaurer.vscode-jumpy
+  - EditorConfig.EditorConfig
+  - VisualStudioExptTeam.vscodeintellicode
+  - redhat.vscode-yaml
+  - PeterJausovec.vscode-docker
+  - msjsdiag.debugger-for-chrome
 # - joaompinto.asciidoctor-vscode
 # - stayfool.vscode-asciidoc
 
