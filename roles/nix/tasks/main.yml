@@ -1,7 +1,7 @@
 - name: Install NIX package manager
   aur:
     name: "nix"
-    hash: "be00bfe3c552d815361085d77657981702897ce5"
+    hash: "b3d2371e5522299b774c435c5f0166f5e7329ca4"
     user: "{{ user.name }}"
 
 - name: Enable NIX Daemon

@@ -59,7 +59,7 @@ desktop_apps:
 desktop_apps_aur:
   base:
     - name: google-chrome
-      hash: a6256e208f72f7afd6f7a5815e66b2c426fe68e2
+      hash: c8b9d06474d16239037de61f5df9ecf68bcc24ef
     - name: ttf-ms-fonts
       hash: ba83093fb7e7135736d0762cceff1c264b01719c
 
@@ -106,6 +106,6 @@ aur_fonts:
   - name: ttf-google-fonts-opinionated-git
     hash: eb09d72962f3565c5790023d8adf2aa2cb8d8cca
   - name: ttf-symbola
-    hash: 441949ca0d1d44eacd2a258cbab42766655f1bf7
+    hash: 015b5ce0a7772a84258f040f6bb391dcad09031a
   - name: ttf-inter-ui
-    hash: e7d91be7abe0308572b4171213d8662dc1f9ec28
+    hash: 59c97c0f0cebf508ff0e7be49e41e0c00e9cf829
