@@ -101,6 +101,7 @@ The system can be rolled back to the MINIMAL-Snapshot to get a fresh and clean s
 2. Update the snapshot by calling `pacman -Syu`
 3. Backup the current EDGE snapshot as STABLE `/config/scripts/backup_edge_as_stable.bash`
 4. Roll back the EDGE snapshot to MINIMAL `/config/scripts/reset_edge_to_minimal.bash`
+  - This might fail with an error "Directory not empty". This might be due to existing docker images/volumes. `docker system prune -a && docker volume prune` can be used to delete all containers, images and volumes.
 5. Reboot into EDGE
 6. Run Ansible `/config/run.bash`
 
