@@ -44,6 +44,8 @@ fi
 
 echo "INFO: Creating new snapshot $SNAPSHOT_TO_RESET"
 btrfs subvolume snapshot "$SNAPSHOTS_DIRECTORY/$SNAPSHOT_SOURCE" "$SNAPSHOTS_DIRECTORY/$SNAPSHOT_TO_RESET"
+echo "INFO: Updating fstab..."
+sed -i "s/$SNAPSHOT_SOURCE/$SNAPSHOT_TO_RESET/g" "/.snapshots/$SNAPSHOT_TO_RESET/etc/fstab"
 
 if [ -d "/.efi/installs/$SNAPSHOT_SOURCE" ]; then
     echo "INFO: Copying kernel..."
