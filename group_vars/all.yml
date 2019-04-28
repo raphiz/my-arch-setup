@@ -103,8 +103,6 @@ base_fonts:
   - noto-fonts-emoji
 
 aur_fonts:
-  - name: ttf-google-fonts-opinionated-git
-    hash: eb09d72962f3565c5790023d8adf2aa2cb8d8cca
   - name: ttf-symbola
     hash: 015b5ce0a7772a84258f040f6bb391dcad09031a
   - name: ttf-inter-ui
