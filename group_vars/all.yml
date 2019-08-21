@@ -60,6 +60,8 @@ desktop_apps_aur:
       hash: c8b9d06474d16239037de61f5df9ecf68bcc24ef
     - name: ttf-ms-fonts
       hash: ba83093fb7e7135736d0762cceff1c264b01719c
+    - name: direnv
+      hash: 6f37e247d7c6b9b8f873dd53c547e4916d5df5b3
 
 # To update this list, use `code --list-extensions`
 vscode_extensions:
