@@ -11,8 +11,6 @@
 # features:
 #  - resticTimer
 #  - cnijfilter2
-#  - openjdk
-#  - jdk8
 #  - virtualbox
 
 # Global packages

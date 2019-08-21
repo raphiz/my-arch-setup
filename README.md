@@ -71,7 +71,6 @@ user:
   mail: user@example.com
 
 features:
-  - openjdk
   - virtualbox
 
 apps:
