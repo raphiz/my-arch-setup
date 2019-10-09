@@ -15,6 +15,7 @@
 
 # Global packages
 base_packages:
+  - base
   - reflector
   - pacman-contrib
   - vim
