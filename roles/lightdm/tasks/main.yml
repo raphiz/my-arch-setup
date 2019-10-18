@@ -3,7 +3,6 @@
     name:
       - lightdm
       - lightdm-gtk-greeter
-      - light-locker
       - accountsservice
     state: present
 
