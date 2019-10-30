@@ -81,11 +81,10 @@ vscode_extensions:
   - dhoeric.ansible-vault
   - vscoss.vscode-ansible
   - CoenraadS.bracket-pair-colorizer-2
-  - wmaurer.vscode-jumpy
   - EditorConfig.EditorConfig
   - VisualStudioExptTeam.vscodeintellicode
   - redhat.vscode-yaml
-  - PeterJausovec.vscode-docker
+  - ms-azuretools.vscode-docker
   - msjsdiag.debugger-for-chrome
 # - joaompinto.asciidoctor-vscode
 # - stayfool.vscode-asciidoc
@@ -102,6 +101,7 @@ base_fonts:
   - gsfonts
   - tex-gyre-fonts
   - noto-fonts-emoji
+  - ttf-fira-mono
 
 aur_fonts:
   - name: ttf-symbola

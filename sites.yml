@@ -24,7 +24,6 @@
     - { role: firewall, tags: ["fireall"] }
 
     - { role: desktop, tags: ["desktop"] }
-    - { role: java, tags: ["java"] }
     - { role: node, tags: ["node"] }
     - { role: redshift, tags: ["redshift"] }
     - { role: yubikey, tags: ["yubikey"] }
@@ -37,7 +36,6 @@
         when: features is defined and "bluetooth" in features,
       }
     - { role: gnupg, tags: ["gnupg"] }
-    - { role: nix, tags: ["nix"] }
     - { role: restic-backup, tags: ["restic-backup"] }
     - { role: dotfiles, tags: ["dotfiles"] }
     - { role: snapshots, tags: ["snapshots"] }

@@ -1,8 +1,0 @@
-- name: Install NIX package manager
-  aur:
-    name: "nix"
-    hash: "b3d2371e5522299b774c435c5f0166f5e7329ca4"
-    user: "{{ user.name }}"
-
-- name: Enable NIX Daemon
-  service: name=nix-daemon.socket enabled=yes
