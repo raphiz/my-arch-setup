@@ -70,7 +70,6 @@ vscode_extensions:
   - adamvoss.vscode-languagetool
   - adamvoss.vscode-languagetool-de
   - adamvoss.vscode-languagetool-en
-  - akamud.vscode-theme-onelight
   - esbenp.prettier-vscode
   - mikeburgh.xml-format
   - octref.vetur
