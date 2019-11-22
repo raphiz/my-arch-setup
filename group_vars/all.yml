@@ -25,6 +25,7 @@ base_packages:
   - openssh
   - unzip
   - zip
+  - mlocate
 
 desktop_apps:
   base:
