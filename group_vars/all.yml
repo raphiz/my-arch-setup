@@ -97,6 +97,7 @@ journal:
 base_fonts:
   - terminus-font
   - ttf-dejavu
+  - ttf-bitstream-vera
   - ttf-liberation
   - gsfonts
   - tex-gyre-fonts

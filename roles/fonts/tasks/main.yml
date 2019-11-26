@@ -23,6 +23,30 @@
         dest=/etc/fonts/conf.d/10-hinting-slight.conf
         state=link
 
+- name: Copy no mozilla emoji font configuration
+  copy: src=70-no-mozilla-emoji.conf dest=/etc/fonts/conf.avail/70-no-mozilla-emoji.conf
+
+- name: Copy no DejaVu Sans font configuration
+  copy: src=70-no-deja-vu.conf dest=/etc/fonts/conf.avail/70-no-deja-vu.conf
+
+- name: Copy noto emoji font configuration
+  copy: src=75-noto-color-emoji.conf dest=/etc/fonts/conf.avail/75-noto-color-emoji.conf
+
+# Test Page, eg. for chrome: https://eosrei.github.io/emojione-color-font/full-demo.html
+- name: Disable mozilla emoji font
+  file: src=/etc/fonts/conf.avail/70-no-mozilla-emoji.conf
+        dest=/etc/fonts/conf.d/70-no-mozilla-emoji.conf
+        state=link
+- name: Disable DejaVu font
+  file: src=/etc/fonts/conf.avail/70-no-deja-vu.conf
+        dest=/etc/fonts/conf.d/70-no-deja-vu.conf
+        state=link
+
+- name: Enable Emoji font
+  file: src=/etc/fonts/conf.avail/75-noto-color-emoji.conf
+        dest=/etc/fonts/conf.d/75-noto-color-emoji.conf
+        state=link
+
 - name: Install base fonts
   pacman: name={{ base_fonts }} state=present
 
