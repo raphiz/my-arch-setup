@@ -25,7 +25,11 @@ base_packages:
   - openssh
   - unzip
   - zip
-  - mlocate
+  - fd
+  - bat
+  - ripgrep
+  - httpie
+
 
 desktop_apps:
   base:
