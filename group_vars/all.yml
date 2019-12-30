@@ -63,7 +63,7 @@ desktop_apps:
 desktop_apps_aur:
   base:
     - name: google-chrome
-      hash: c8b9d06474d16239037de61f5df9ecf68bcc24ef
+      hash: a7c9ebaa9ae08b8e66944f610cb76a599487425b
     - name: ttf-ms-fonts
       hash: ba83093fb7e7135736d0762cceff1c264b01719c
     - name: direnv
