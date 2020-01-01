@@ -6,11 +6,15 @@
     state: present
 
 - name: Install networkmanager-openvpn
-  pacman: name=networkmanager-openvpn state=present
+  pacman:
+    name: networkmanager-openvpn
+    state: present
   when: features is defined and "openvpn" in features
 
 - name: Install networkmanager-vpnc
-  pacman: name=networkmanager-vpnc state=present
+  pacman:
+    name: networkmanager-vpnc
+    state: present
   when: features is defined and "vpnc" in features
 
 - name: Install Avahi (Zeroconf)
@@ -21,13 +25,21 @@
     state: present
 
 - name: Update Name Service Switch config
-  copy: src=nsswitch.conf dest=/etc/nsswitch.conf
+  copy:
+    src: nsswitch.conf
+    dest: /etc/nsswitch.conf
 
 - name: Enable Avahi
-  service: name=avahi-daemon.service enabled=yes
+  service:
+    name: avahi-daemon.service
+    enabled: yes
 
 - name: Enable NetworkManager
-  service: name=NetworkManager.service enabled=yes
+  service:
+    name: NetworkManager.service
+    enabled: yes
 
 - name: Enable NetworkManager dispatcher
-  service: name=NetworkManager-dispatcher.service enabled=yes
+  service:
+    name: NetworkManager-dispatcher.service
+    enabled: yes

@@ -1,13 +1,18 @@
 ---
 - name: Install universal base packages
-  pacman: name="{{ base_packages }}" state=present
+  pacman:
+    name: "{{ base_packages }}"
+    state: present
 
 - name: Create pacman hook directory
-  file: path=/etc/pacman.d/hooks
-        state=directory
+  file:
+    path: /etc/pacman.d/hooks
+    state: directory
 
 - name: Push pacman mirror list update hook
-  copy: src=mirrorlist.hook dest=/etc/pacman.d/hooks/mirrorlist.hook
+  copy:
+    src: mirrorlist.hook
+    dest: /etc/pacman.d/hooks/mirrorlist.hook
 
 - name: Install yay
   aur:

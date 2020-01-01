@@ -1,6 +1,7 @@
 - name: Add pacman hook to snapshot before upgrade (EDGE)
-  copy: src=backup-EDGE-to-STABLE.hook dest=/usr/share/libalpm/hooks/backup-EDGE-to-STABLE.hook
-
+  copy:
+    src: backup-EDGE-to-STABLE.hook
+    dest: /usr/share/libalpm/hooks/backup-EDGE-to-STABLE.hook
 # TODO: Copy snapshot-timeline to /usr/lib/snapshot-timeline
 # TODO: Copy snapshot-timeline* to /usr/lib/systemd/system/
 # TODO: Enable snapshot-timeline*

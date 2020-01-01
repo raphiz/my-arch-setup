@@ -8,7 +8,9 @@
     state: present
 
 - name: Copy TLP configuration file
-  copy: src=tlp.conf dest=/etc/default/tlp
+  copy:
+    src: tlp.conf
+    dest: /etc/default/tlp
 
 - name: Mask systemd radio service
   command: systemctl mask systemd-rfkill.service
@@ -17,7 +19,11 @@
   command: systemctl mask systemd-rfkill.socket
 
 - name: Enable TLP
-  service: name=tlp.service enabled=yes
+  service:
+    name: tlp.service
+    enabled: yes
 
 - name: Enable TLP sleep
-  service: name=tlp-sleep.service enabled=yes
+  service:
+    name: tlp-sleep.service
+    enabled: yes

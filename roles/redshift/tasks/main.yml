@@ -1,5 +1,7 @@
 - name: Install RedShift
-  pacman: name=redshift state=present
+  pacman:
+    name: redshift
+    state: present
 
 - name: Prepare systemd directories
   file:

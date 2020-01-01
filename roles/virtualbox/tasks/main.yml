@@ -9,5 +9,8 @@
   when: features is defined and "virtualbox" in features
 
 - name: Add the user to vboxusers group
-  user: name={{ user.name }} groups=vboxusers append=yes
+  user:
+    name: "{{ user.name }}"
+    groups: vboxusers
+    append: yes
   when: features is defined and "virtualbox" in features

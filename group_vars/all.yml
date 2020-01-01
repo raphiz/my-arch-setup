@@ -30,7 +30,6 @@ base_packages:
   - ripgrep
   - httpie
 
-
 desktop_apps:
   base:
     - firefox
@@ -71,6 +70,8 @@ desktop_apps_aur:
 
 # To update this list, use `code --list-extensions`
 vscode_extensions:
+  - ms-python.python
+  - ms-vscode.vscode-typescript-tslint-plugin
   - DavidAnson.vscode-markdownlint
   - adamvoss.vscode-languagetool
   - adamvoss.vscode-languagetool-de

@@ -1,11 +1,15 @@
 - name: Copy pacman configuration file
-  copy: src=pacman.conf dest=/etc/pacman.conf
+  copy:
+    src: pacman.conf
+    dest: /etc/pacman.conf
 
 - name: Refresh pacman mirrors
-  pacman: update_cache=yes
+  pacman:
+    update_cache: yes
 
 - name: Set the hostname
-  hostname: name={{ hostname }}
+  hostname:
+    name: "{{ hostname }}"
   when: hostname is defined
 
 - import_tasks: shell.yml

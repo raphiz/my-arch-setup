@@ -1,3 +1,5 @@
 ---
 - name: Install gnupg
-  pacman: name=gnupg state=present
+  pacman:
+    name: gnupg
+    state: present

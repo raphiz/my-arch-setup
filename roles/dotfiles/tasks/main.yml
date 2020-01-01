@@ -5,7 +5,10 @@
   when: dotfiles is defined
 
 - name: Clone user dotfiles
-  git: repo={{ dotfiles }} dest=/home/{{ user.name }}/.dotfiles update=no
+  git:
+    repo: "{{ dotfiles }}"
+    dest: /home/{{ user.name }}/.dotfiles
+    update: no
   when: dotfiles is defined and not dotfiles_directory.stat.exists
   become: yes
   become_user: "{{ user.name }}"

@@ -1,6 +1,10 @@
 ---
 - name: Install acpi_call for TLP battery functions
-  pacman: name=acpi_call state=present
+  pacman:
+    name: acpi_call
+    state: present
 
 - name: Install acpi
-  pacman: name=acpi state=present
+  pacman:
+    name: acpi
+    state: present

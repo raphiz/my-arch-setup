@@ -1,14 +1,31 @@
 - name: Create user group
-  group: name={{ user.group }} state=present
+  group:
+    name: "{{ user.group }}"
+    state: present
 
 - name: Create user and assign to group
-  user: name={{ user.name }} group={{ user.group }} password={{ user.password|password_hash('sha512', user.password_salt) }} uid={{ user.uid }} append=yes
+  user:
+    name: "{{ user.name }}"
+    group: "{{ user.group }}"
+    password: "{{ user.password|password_hash('sha512', user.password_salt) }}"
+    uid: "{{ user.uid }}"
+    append: yes
 
 - name: Create user socket directory
-  file: path=/run/user/{{ user.uid }} state=directory owner={{ user.name }} group={{ user.group }} mode=0700
+  file:
+    path: /run/user/{{ user.uid }}
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+    mode: 0700
 
 - name: Create SSH directory
-  file: path=/home/{{ user.name }}/.ssh/ state=directory owner={{ user.name }} group={{ user.group }} mode=0700
+  file:
+    path: /home/{{ user.name }}/.ssh/
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+    mode: 0700
 
 - name: Check if ssh keys exist for this host
   stat:

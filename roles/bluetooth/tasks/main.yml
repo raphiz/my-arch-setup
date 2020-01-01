@@ -8,7 +8,11 @@
     state: present
 
 - name: Adapt polkit for blueman
-  copy: src=81-blueman.rules dest=/etc/polkit-1/rules.d/81-blueman.rules
+  copy:
+    src: 81-blueman.rules
+    dest: /etc/polkit-1/rules.d/81-blueman.rules
 
 - name: Enable bluetooth service
-  service: name=bluetooth.service enabled=yes
+  service:
+    name: bluetooth.service
+    enabled: yes

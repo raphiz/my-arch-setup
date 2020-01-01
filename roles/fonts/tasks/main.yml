@@ -1,54 +1,74 @@
 ---
 - name: Install freetyp2
-  pacman: name=freetype2 state=present
+  pacman:
+    name: freetype2
+    state: present
 
 - name: Install cairo
-  pacman: name=cairo state=present
+  pacman:
+    name: cairo
+    state: present
 
 - name: Install fontconfig
-  pacman: name=fontconfig state=present
+  pacman:
+    name: fontconfig
+    state: present
 
 - name: Enable LCD filter
-  file: src=/etc/fonts/conf.avail/11-lcdfilter-default.conf
-        dest=/etc/fonts/conf.d/11-lcdfilter-default.conf
-        state=link
+  file:
+    src: /etc/fonts/conf.avail/11-lcdfilter-default.conf
+    dest: /etc/fonts/conf.d/11-lcdfilter-default.conf
+    state: link
 
 - name: Enable sub-pixel rendering
-  file: src=/etc/fonts/conf.avail/10-sub-pixel-rgb.conf
-        dest=/etc/fonts/conf.d/10-sub-pixel-rgb.conf
-        state=link
+  file:
+    src: /etc/fonts/conf.avail/10-sub-pixel-rgb.conf
+    dest: /etc/fonts/conf.d/10-sub-pixel-rgb.conf
+    state: link
 
 - name: Enable hinting
-  file: src=/etc/fonts/conf.avail/10-hinting-slight.conf
-        dest=/etc/fonts/conf.d/10-hinting-slight.conf
-        state=link
+  file:
+    src: /etc/fonts/conf.avail/10-hinting-slight.conf
+    dest: /etc/fonts/conf.d/10-hinting-slight.conf
+    state: link
 
 - name: Copy no mozilla emoji font configuration
-  copy: src=70-no-mozilla-emoji.conf dest=/etc/fonts/conf.avail/70-no-mozilla-emoji.conf
+  copy:
+    src: 70-no-mozilla-emoji.conf
+    dest: /etc/fonts/conf.avail/70-no-mozilla-emoji.conf
 
 - name: Copy no DejaVu Sans font configuration
-  copy: src=70-no-deja-vu.conf dest=/etc/fonts/conf.avail/70-no-deja-vu.conf
+  copy:
+    src: 70-no-deja-vu.conf
+    dest: /etc/fonts/conf.avail/70-no-deja-vu.conf
 
 - name: Copy noto emoji font configuration
-  copy: src=75-noto-color-emoji.conf dest=/etc/fonts/conf.avail/75-noto-color-emoji.conf
+  copy:
+    src: 75-noto-color-emoji.conf
+    dest: /etc/fonts/conf.avail/75-noto-color-emoji.conf
 
 # Test Page, eg. for chrome: https://eosrei.github.io/emojione-color-font/full-demo.html
 - name: Disable mozilla emoji font
-  file: src=/etc/fonts/conf.avail/70-no-mozilla-emoji.conf
-        dest=/etc/fonts/conf.d/70-no-mozilla-emoji.conf
-        state=link
+  file:
+    src: /etc/fonts/conf.avail/70-no-mozilla-emoji.conf
+    dest: /etc/fonts/conf.d/70-no-mozilla-emoji.conf
+    state: link
 - name: Disable DejaVu font
-  file: src=/etc/fonts/conf.avail/70-no-deja-vu.conf
-        dest=/etc/fonts/conf.d/70-no-deja-vu.conf
-        state=link
+  file:
+    src: /etc/fonts/conf.avail/70-no-deja-vu.conf
+    dest: /etc/fonts/conf.d/70-no-deja-vu.conf
+    state: link
 
 - name: Enable Emoji font
-  file: src=/etc/fonts/conf.avail/75-noto-color-emoji.conf
-        dest=/etc/fonts/conf.d/75-noto-color-emoji.conf
-        state=link
+  file:
+    src: /etc/fonts/conf.avail/75-noto-color-emoji.conf
+    dest: /etc/fonts/conf.d/75-noto-color-emoji.conf
+    state: link
 
 - name: Install base fonts
-  pacman: name={{ base_fonts }} state=present
+  pacman:
+    name: "{{ base_fonts }}"
+    state: present
 
 - name: Install aur fonts
   aur:

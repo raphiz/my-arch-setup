@@ -1,5 +1,9 @@
 - name: Installing intel graphics drivers
-  pacman: name=xf86-video-intel state=present
+  pacman:
+    name: xf86-video-intel
+    state: present
 
 - name: Copy intel graphics configuration file
-  copy: src=20-intel.conf dest=/etc/X11/xorg.conf.d/20-intel.conf
+  copy:
+    src: 20-intel.conf
+    dest: /etc/X11/xorg.conf.d/20-intel.conf

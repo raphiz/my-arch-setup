@@ -8,4 +8,6 @@
     state: present
 
 - name: Enable LightDM
-  service: name=lightdm.service enabled=yes
+  service:
+    name: lightdm.service
+    enabled: yes

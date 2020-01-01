@@ -1,5 +1,7 @@
 - name: Install Restic
-  pacman: name=restic state=present
+  pacman:
+    name: restic
+    state: present
 
 - name: Prepare systemd directories
   file:

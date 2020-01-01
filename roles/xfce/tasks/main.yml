@@ -1,5 +1,7 @@
 - name: Install xfce4 group
-  pacman: name=xfce4 state=present
+  pacman:
+    name: xfce4
+    state: present
 
 - name: Install additional xfce4 stuff
   pacman:
