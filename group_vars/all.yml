@@ -111,8 +111,7 @@ base_fonts:
   - noto-fonts-emoji
   - ttf-fira-mono
 
-aur_fonts:
-  - name: ttf-symbola
-    hash: 015b5ce0a7772a84258f040f6bb391dcad09031a
-  - name: ttf-inter-ui
-    hash: 59c97c0f0cebf508ff0e7be49e41e0c00e9cf829
+aur_fonts: []
+  # TODO: Temporarliy disabled since sources are currently unavailable
+  # - name: ttf-symbola
+  #   hash: 657659284c461b1afb259e777329a391153e7550
