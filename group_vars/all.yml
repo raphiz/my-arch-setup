@@ -83,6 +83,7 @@ vscode_extensions:
   - streetsidesoftware.code-spell-checker
   - streetsidesoftware.code-spell-checker-german
   - timonwong.shellcheck
+  - foxundermoon.shell-format
   - dhoeric.ansible-vault
   - vscoss.vscode-ansible
   - CoenraadS.bracket-pair-colorizer-2
