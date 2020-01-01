@@ -20,7 +20,6 @@ The code in this repository is [MIT licensed](./LICENSE)
 
 The installation is described in a [separate document](./INSTALL.md). Before you start though you should create a custom [hosts directory](#hosts-directory).
 
-
 ## Hosts Directory
 
 An entire system setup as this requires secret information, such as SSH-keys and passwords. Also, this setup is not limited to just one specific machine but can be used for multiple similar installations, for example, for work and private purposes. To achieve these properties a dedicated `hosts` directory exists, that can be managed separately and privately (to keep secrets private). It's recommended to keep the hosts directory under version control as well. The hosts directory is placed directly in the root of this repository and might look like this (containing two hosts):
@@ -40,7 +39,7 @@ hosts/
     inventory/
         host_vars/
             host1.yaml
-            host2.yaml 
+            host2.yaml
         hosts
 ```
 
@@ -76,31 +75,32 @@ features:
 apps:
   - youtube-dl
 ```
+
 The parameters of this configuration file are used in the roles defined in this repository, and you can find out more about them by browsing through this repo (I know, just a bad excuse because I'm too lazy to document it).
 
 ## BTRFS Subvolume Concept
 
 The primary motivation for this subvolume concept was to be able to roll back the system to a minimal base state, on which the main ansible setup can be executed without affecting user data. This saves time (no fresh arch installation required) and is good hygiene.
 
-The concept used in the installation script assumes three versions of the file system root, all of which are just BTRFS subvolumes/snapshots. The **EDGE** subvolume is used on a daily basis as one uses any other operating system. It is upgraded frequently and changes continuously. 
+The concept used in the installation script assumes three versions of the file system root, all of which are just BTRFS subvolumes/snapshots. The **EDGE** subvolume is used on a daily basis as one uses any other operating system. It is upgraded frequently and changes continuously.
 
 If something breaks after a package upgrade and things "just have to work", one can quickly roll-back to the **STABLE** subvolume. The **STABLE** is a copy of the **EDGE** which is updated before a Pacman transaction.
 
- After the base installation, the **MINIMAL** subvolume is created. One can always roll back to this state to cleanly rerun this Ansible setup from scratch.
+After the base installation, the **MINIMAL** subvolume is created. One can always roll back to this state to cleanly rerun this Ansible setup from scratch.
 
-Some subdirectories, such as `/home`,  are separate BTRFS-subvolumes and not affected by these rollback actions, as they are not part of the system configuration.
+Some subdirectories, such as `/home`, are separate BTRFS-subvolumes and not affected by these rollback actions, as they are not part of the system configuration.
 
 Note that all subvolumes are **NOT** read-only (it's not possible to boot them otherwise) and are, therefore, not real snapshots. If you have an idea how to fix this, please open an issue or contact me!
 
 ## Regular Ansible Restore
 
-The system can be rolled back to the MINIMAL-Snapshot to get a fresh and clean setup as described in this playbook without having to do the whole Arch Linux base system installation. 
+The system can be rolled back to the MINIMAL-Snapshot to get a fresh and clean setup as described in this playbook without having to do the whole Arch Linux base system installation.
 
-1. Boot into MINIMAL snapshot 
+1. Boot into MINIMAL snapshot
 2. Update the snapshot by calling `pacman -Syu`
 3. Backup the current EDGE snapshot as STABLE `/config/scripts/backup_edge_as_stable.bash`
 4. Roll back the EDGE snapshot to MINIMAL `/config/scripts/reset_edge_to_minimal.bash`
-  - This might fail with an error "Directory not empty". This might be due to existing docker images/volumes. `docker system prune -a && docker volume prune` can be used to delete all containers, images and volumes.
+   - This might fail with an error "Directory not empty". This might be due to existing docker images/volumes. `docker system prune -a && docker volume prune` can be used to delete all containers, images and volumes.
 5. Reboot into EDGE
 6. Run Ansible `/config/run.bash`
 
