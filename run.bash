@@ -11,4 +11,4 @@ fi
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd "$SCRIPT_PATH"
 
-ansible-playbook --ask-vault-pass -l "$HOSTNAME" sites.yml
+ansible-playbook --ask-vault-pass -l "$HOSTNAME" $@ sites.yml
