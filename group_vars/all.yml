@@ -93,6 +93,7 @@ vscode_extensions:
   - redhat.vscode-yaml
   - ms-azuretools.vscode-docker
   - msjsdiag.debugger-for-chrome
+  - exiasr.hadolint
 # - joaompinto.asciidoctor-vscode
 # - stayfool.vscode-asciidoc
 
