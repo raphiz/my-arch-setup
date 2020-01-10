@@ -108,6 +108,7 @@ base_fonts:
   - gsfonts
   - tex-gyre-fonts
   - noto-fonts-emoji
+  - noto-fonts-cjk
   - ttf-fira-mono
   - ttf-opensans
   - ttf-roboto
