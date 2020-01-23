@@ -29,6 +29,7 @@ base_packages:
   - bat
   - ripgrep
   - httpie
+  - tree
 
 desktop_apps:
   base:
