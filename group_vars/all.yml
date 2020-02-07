@@ -38,8 +38,6 @@ desktop_apps:
     - notepadqq
     - qpdfview
     - libreoffice-fresh-de
-    - hunspell
-    - hunspell-de
     - keepassxc
     - ntfs-3g
     - jq

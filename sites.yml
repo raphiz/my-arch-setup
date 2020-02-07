@@ -24,6 +24,7 @@
     - { role: firewall, tags: ["fireall"] }
 
     - { role: desktop, tags: ["desktop"] }
+    - { role: spell, tags: ["spell"] }
     - { role: node, tags: ["node"] }
     - { role: redshift, tags: ["redshift"] }
     - { role: yubikey, tags: ["yubikey"] }

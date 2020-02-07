@@ -2,8 +2,9 @@
   pacman:
     name:
       - hunspell
-      - hunspell-en
       - hunspell-de
+      - hunspell-en_GB
+      - hunspell-en_US
     state: present
 
 - name: Install aspell
