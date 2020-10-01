@@ -35,7 +35,6 @@ desktop_apps:
   base:
     - firefox
     - thunderbird
-    - notepadqq
     - qpdfview
     - libreoffice-fresh-de
     - keepassxc
