@@ -19,3 +19,15 @@
   service:
     name: docker.service
     enabled: yes
+
+- name: Check if daemon.json file exist for this host
+  stat:
+    path: hosts/files/{{inventory_hostname}}/docker/daemon.json
+  register: stat_result
+
+- name: Copy daemon.json for this host
+  copy:
+    src: hosts/files/{{inventory_hostname}}/docker/daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 0644
+  when: stat_result.stat.exists
