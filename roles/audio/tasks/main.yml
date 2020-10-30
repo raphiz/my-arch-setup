@@ -10,3 +10,8 @@
   copy:
     src: nobeep.conf
     dest: /etc/modprobe.d/nobeep.conf
+
+- name: Replace pulse audio config (Automatically switch headset)
+  copy:
+    src: default.pa
+    dest: /etc/pulse/default.pa
