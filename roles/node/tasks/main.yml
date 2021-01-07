@@ -1,19 +1,8 @@
 - name: Install node.js
   pacman:
-    name: nodejs-lts-dubnium
-    state: present
-- name: Install yarn
-  pacman:
-    name: yarn
+    name: nodejs
     state: present
 - name: Install npm
   pacman:
     name: npm
     state: present
-# Alternative: NVM (aur)
-# When using NVM, lazily source the init script in the .bash_rc as follows:
-# then, install yarn etc. using `npm install -g`
-# alias source_nvm='unalias node && unalias nvm && unalias npm && source "/usr/share/nvm/init-nvm.sh"'
-# alias nvm='source_nvm && nvm'
-# alias node='source_nvm && node'
-# alias npm='source_nvm && npm'
