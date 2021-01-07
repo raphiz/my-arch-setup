@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -eEuo pipefail
+socket_name="jome.socket.$(id -u)"
+
+if ! pidof jome &>/dev/null; then
+	rm -f "/tmp/$socket_name"
+	jome -s "$socket_name" -c 'xdotool type' &
+	disown
+
+	while [ ! -e "/tmp/$socket_name" ]; do
+		sleep .1
+	done
+fi
+
+jome-ctl "$socket_name"

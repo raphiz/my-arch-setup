@@ -56,3 +56,4 @@
 
 - import_tasks: look_and_feel.yml
 - import_tasks: scanning.yml
+- import_tasks: emoji-keyboard.yml

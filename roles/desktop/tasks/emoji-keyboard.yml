@@ -1,0 +1,19 @@
+- name: Install emoji keyboard
+  aur:
+    name: jome-git
+    hash: f2ab5d71ea842bf2a2991521bcbccf0c6ffb8073
+    user: "{{ user.name }}"
+- name: Install xdotool
+  tags:
+    - emoji
+  pacman:
+    name:
+      - xdotool
+    state: present
+- name: Add keyboard shortcut file
+  tags:
+    - emoji
+  copy:
+    src: jome-input
+    dest: /usr/bin/jome-input
+    mode: 0755
