@@ -12,20 +12,28 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-if [ $# -ne 1 ]; then
+if ! [ $# -eq 1 ] && ! [[ $# -eq 2 && "$1" == "--force" ]]; then
     echo "USAGE: ./$0 SNAPSHOT_NAME" >&2
     exit 1;
 fi
 
-SNAPSHOT_NAME=$1
+if [ $# -eq 1 ];then
+    SNAPSHOT_NAME="$1"
+    FORCE=false
+else
+    SNAPSHOT_NAME="$2"
+    FORCE=true
+fi
 
 echo "INFO: Will delete snapshot $SNAPSHOT_NAME."
 
-read -p "Are you sure? (Enter yes in uppercase to continue) " -r
+if ! $FORCE; then
+    read -p "Are you sure? (Enter yes in uppercase to continue) " -r
 
-if [ ! "$REPLY" == "YES" ]; then
-    echo "Aborting" >&2
-    exit 1
+    if [ ! "$REPLY" == "YES" ]; then
+        echo "Aborting" >&2
+        exit 1
+    fi
 fi
 
 CURRENTLY_MOUNTED_SNAPSHOT=$(findmnt -n --target=/ -o OPTIONS | sed -E 's/.*subvol=\/@snapshots\/([^,]+*).*/\1/')
