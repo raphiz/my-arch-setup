@@ -2,7 +2,7 @@
 set -eu
 
 
-NEW_SNAPSHOT_NAME=$(date +"%Y-%m-%d")
+NEW_SNAPSHOT_NAME=pacman-$(date +"%Y-%m-%d")
 if [[ -e "/.snapshots/$NEW_SNAPSHOT_NAME" ]] ; then
     i=1
     while [[ -e "/.snapshots/$NEW_SNAPSHOT_NAME""_$i" ]] ; do
