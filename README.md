@@ -84,7 +84,7 @@ The primary motivation for this subvolume concept was to be able to roll back th
 
 The concept used in the installation script assumes three versions of the file system root, all of which are just BTRFS subvolumes/snapshots. The **EDGE** subvolume is used on a daily basis as one uses any other operating system. It is upgraded frequently and changes continuously.
 
-If something breaks after a package upgrade and things "just have to work", one can quickly roll-back to the **STABLE** subvolume. The **STABLE** is a copy of the **EDGE** which is updated before a Pacman transaction.
+Before pacman changes anything, a hook makes a copy of the **EDGE** subvolume. If something breaks after a package upgrade and things "just have to work", one can quickly roll-back to this snapshot. These subvolumes are prefixed with **pacman-**, or example pacman-2021-02-09. 
 
 After the base installation, the **MINIMAL** subvolume is created. One can always roll back to this state to cleanly rerun this Ansible setup from scratch.
 
