@@ -23,3 +23,6 @@ SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Remove pacman db lock
 rm "/.snapshots/$NEW_SNAPSHOT_NAME/var/lib/pacman/db.lck"
+
+# Clean up old snapshots
+"$SCRIPT_PATH/clean_up_old_snapshots.bash"
