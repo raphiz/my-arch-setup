@@ -17,3 +17,4 @@
 - import_tasks: sudo.yml
 - import_tasks: journal.yml
 - import_tasks: packages.yml
+- import_tasks: sysctl.yml

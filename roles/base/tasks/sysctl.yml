@@ -1,0 +1,6 @@
+- name: Add sysctl configuration
+  copy:
+    src: 99-sysctl.conf
+    dest: /etc/sysctl.d/99-sysctl.conf
+  tags:
+    - sysctl
