@@ -41,5 +41,5 @@
 
 - name: Enable CUPS
   service:
-    name: org.cups.cupsd.service
+    name: cups
     enabled: yes

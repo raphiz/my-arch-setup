@@ -25,14 +25,20 @@ dd bs=4M if=archlinux-2018.04.01-x86_64.iso of=/dev/sdX oflag=sync
 
 ## Base System Installation
 
-DISCLAIMER: Note that this installation script was tested with the Arch Linux installation image from 2019-01-01. Manual intervention for newer images might be required.
+DISCLAIMER: Note that this installation script was tested with the Arch Linux installation image from 2021-06-01. Manual intervention for newer images might be required.
 
 ```bash
 # Verify boot mode is EFI
 ls /sys/firmware/efi/efivars
 
-# Setup internet connection, for example, using wifi-menu:
-wifi-menu
+# Setup internet connection, for example, using iwctl for WiFi:
+iwctl
+> device list
+> station wlan0 scan
+> station wlan0 get-networks
+> station wlan0 connect <SSID>
+> station wlan0 show
+> exit
 
 # HIDPI: use a bigger font
 pacman -S terminus-font
@@ -65,8 +71,10 @@ During the installation, you will be prompted for a root password, to confirm th
 After the installation of the base system (and a reboot), it's time to install the actual system configuration managed by ansible.
 
 ```bash
-# Setup internet connection, for example, using wifi-menu:
-wifi-menu
+# Setup internet connection, for example, using iwctl
+systemctl enable iwd
+systemctl start iwd
+iwctl
 
 # Mount the installation data, eg. using a USB device:
 mkdir /tmp/installation

@@ -17,5 +17,5 @@
 - name: Install yay
   aur:
     name: yay
-    hash: f2a571d9ee3f942af08c703d7747ccc55fa7a9df
+    hash: a8f8d22c3581c8721afdcb631c1003a1984505ff
     user: "{{ user.name }}"

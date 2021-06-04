@@ -95,7 +95,7 @@ mkdir -p /mnt/.efi/installs/EDGE
 mount --bind /mnt/.efi/installs/EDGE /mnt/boot/
 
 echo "Bootstrapping arch distribution"
-pacstrap /mnt base base-devel intel-ucode wpa_supplicant dialog vim btrfs-progs ansible python-passlib
+pacstrap /mnt base base-devel linux linux-firmware intel-ucode iwd wpa_supplicant dialog vim btrfs-progs ansible python-passlib
 
 echo "Generating fstsab"
 genfstab -U /mnt >> /mnt/etc/fstab
