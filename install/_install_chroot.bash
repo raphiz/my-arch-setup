@@ -24,7 +24,7 @@ echo "$PASSWORD
 $PASSWORD" | passwd
 
 # Setup boot loader
-# I don't know why, but this exists with 1 :/
+# I don't know why, but this exits with 1 :/
 bootctl --path=/.efi install || true
 
 sed -i 's/HOOKS=(.*)/HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard shutdown)/g' /etc/mkinitcpio.conf

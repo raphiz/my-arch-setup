@@ -22,8 +22,3 @@
   service:
     name: tlp.service
     enabled: yes
-
-- name: Enable TLP sleep
-  service:
-    name: tlp-sleep.service
-    enabled: yes
