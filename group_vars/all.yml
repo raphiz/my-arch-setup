@@ -121,10 +121,4 @@ aur_fonts:
   - name: ttf-windows
     hash: e61fd6492fa0e94b4918778e7f5ec3bca9f2525a
   - name: ttf-ms-fonts
-<<<<<<< HEAD
     hash: 4b3621d776c7090b7d42ff53e1aa0170e16477e5
-||||||| parent of da7d225 (Update AUR hashes)
-    hash: ba83093fb7e7135736d0762cceff1c264b01719c
-=======
-    hash: 4b3621d776c7090b7d42ff53e1aa0170e16477e5
->>>>>>> da7d225 (Update AUR hashes)

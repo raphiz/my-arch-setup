@@ -17,11 +17,5 @@
 - name: Install yay
   aur:
     name: yay
-<<<<<<< HEAD
-    hash: a8f8d22c3581c8721afdcb631c1003a1984505ff
-||||||| parent of da7d225 (Update AUR hashes)
-    hash: f2a571d9ee3f942af08c703d7747ccc55fa7a9df
-=======
     hash: 34dd8781e7a8d39337fe4c52726dc067332c589c
->>>>>>> da7d225 (Update AUR hashes)
     user: "{{ user.name }}"
