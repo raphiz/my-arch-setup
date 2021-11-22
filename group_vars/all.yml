@@ -90,6 +90,10 @@ vscode_extensions:
   - VisualStudioExptTeam.vscodeintellicode
   - redhat.vscode-yaml
   - ms-azuretools.vscode-docker
+  - github.github-vscode-theme
+  - mathiasfrohlich.kotlin
+  - ms-python.vscode-pylance
+
 
 dotfiles: git@github.com:raphiz/dotfiles.git
 
