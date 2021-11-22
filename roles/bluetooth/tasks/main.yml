@@ -4,6 +4,7 @@
       - bluez
       - bluez-utils
       - blueman
+      - libldac
       - pulseaudio-bluetooth
     state: present
 
