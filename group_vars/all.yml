@@ -64,7 +64,8 @@ desktop_apps_aur:
       hash: 22ec859e0ae62744acf9658110aad765ece3444e
     - name: autojump
       hash: 43ce4aae5b83c65337ba8dfd35026dd65e41c3e9
-
+    - name: ulauncher
+      hash: ddf460dcc5ea1bcd37ae0ba224c5d9351c10c717
 # To update this list, use `code --list-extensions`
 vscode_extensions:
   - ms-python.python
