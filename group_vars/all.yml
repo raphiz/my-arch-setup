@@ -59,11 +59,11 @@ desktop_apps:
 desktop_apps_aur:
   base:
     - name: google-chrome
-      hash: a7c9ebaa9ae08b8e66944f610cb76a599487425b
+      hash: 0836c2542add58e17c2a745660c4cd4769b568e1
     - name: direnv
-      hash: 6f37e247d7c6b9b8f873dd53c547e4916d5df5b3
+      hash: 22ec859e0ae62744acf9658110aad765ece3444e
     - name: autojump
-      hash: 22b96ef925fe122bfa374138442f031e10de138c
+      hash: 43ce4aae5b83c65337ba8dfd35026dd65e41c3e9
 
 # To update this list, use `code --list-extensions`
 vscode_extensions:
@@ -88,10 +88,6 @@ vscode_extensions:
   - VisualStudioExptTeam.vscodeintellicode
   - redhat.vscode-yaml
   - ms-azuretools.vscode-docker
-  - msjsdiag.debugger-for-chrome
-  - exiasr.hadolint
-# - joaompinto.asciidoctor-vscode
-# - stayfool.vscode-asciidoc
 
 dotfiles: git@github.com:raphiz/dotfiles.git
 
@@ -114,10 +110,15 @@ base_fonts:
   - ttf-ubuntu-font-family
 
 aur_fonts:
-  # TODO: Temporarliy disabled since sources are currently unavailable
-  # - name: ttf-symbola
-  #   hash: 657659284c461b1afb259e777329a391153e7550
+  - name: ttf-symbola
+    hash: 41b127010d6033e7d8de4e0e6d3c1408a07ca5fd
   - name: ttf-windows
     hash: e61fd6492fa0e94b4918778e7f5ec3bca9f2525a
   - name: ttf-ms-fonts
+<<<<<<< HEAD
     hash: 4b3621d776c7090b7d42ff53e1aa0170e16477e5
+||||||| parent of da7d225 (Update AUR hashes)
+    hash: ba83093fb7e7135736d0762cceff1c264b01719c
+=======
+    hash: 4b3621d776c7090b7d42ff53e1aa0170e16477e5
+>>>>>>> da7d225 (Update AUR hashes)
