@@ -31,6 +31,7 @@ base_packages:
   - ripgrep
   - httpie
   - tree
+  - direnv
 
 desktop_apps:
   base:
@@ -62,8 +63,6 @@ desktop_apps_aur:
   base:
     - name: google-chrome
       hash: f578dc4fe99b956b6011dde41fa68de88509bc3c
-    - name: direnv
-      hash: e7b81fbaa8e29a3f7771f4ce51e9f8df51416403
     - name: autojump
       hash: 7420b6f15d261578cc019b2ba06b5e6356b727ae
     - name: ulauncher
