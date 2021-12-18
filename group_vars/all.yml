@@ -22,6 +22,7 @@ base_packages:
   - git
   - python
   - python-pip
+  - python-ruamel-yaml # for ./update-aur-hashes.py
   - openssh
   - unzip
   - zip
