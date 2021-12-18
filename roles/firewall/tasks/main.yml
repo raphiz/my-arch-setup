@@ -1,4 +1,3 @@
----
 - name: Remove nftables configuration
   file:
     state: absent

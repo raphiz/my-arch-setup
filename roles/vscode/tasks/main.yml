@@ -1,4 +1,3 @@
----
 - name: Install code
   aur:
     name: visual-studio-code-bin

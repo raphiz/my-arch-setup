@@ -1,4 +1,3 @@
----
 - name: Install sudo
   pacman:
     name: sudo

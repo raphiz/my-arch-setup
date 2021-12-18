@@ -1,4 +1,3 @@
----
 - import_tasks: tlp.yml
 
 - name: Copy logind configuration file

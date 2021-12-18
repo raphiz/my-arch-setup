@@ -1,4 +1,3 @@
----
 - name: Install universal base packages
   pacman:
     name: "{{ base_packages }}"

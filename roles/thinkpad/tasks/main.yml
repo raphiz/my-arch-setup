@@ -1,4 +1,3 @@
----
 - name: Install acpi_call for TLP battery functions
   pacman:
     name: acpi_call
