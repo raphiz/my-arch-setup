@@ -9,7 +9,6 @@
     group: "{{ user.group }}"
     password: "{{ user.password|password_hash('sha512', user.password_salt) }}"
     uid: "{{ user.uid }}"
-    append: yes
 
 - name: Create user socket directory
   file:
