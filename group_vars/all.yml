@@ -60,11 +60,11 @@ desktop_apps:
 desktop_apps_aur:
   base:
     - name: google-chrome
-      hash: 0836c2542add58e17c2a745660c4cd4769b568e1
+      hash: f578dc4fe99b956b6011dde41fa68de88509bc3c
     - name: direnv
-      hash: 22ec859e0ae62744acf9658110aad765ece3444e
+      hash: e7b81fbaa8e29a3f7771f4ce51e9f8df51416403
     - name: autojump
-      hash: 43ce4aae5b83c65337ba8dfd35026dd65e41c3e9
+      hash: 7420b6f15d261578cc019b2ba06b5e6356b727ae
     - name: ulauncher
       hash: ddf460dcc5ea1bcd37ae0ba224c5d9351c10c717
 # To update this list, use `code --list-extensions`
