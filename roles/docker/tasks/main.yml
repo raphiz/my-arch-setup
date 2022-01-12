@@ -30,3 +30,8 @@
     dest: /etc/docker/daemon.json
     mode: 0644
   when: stat_result.stat.exists
+
+- name: Eanabel overlay kernel module
+  copy:
+    src: overlay.conf
+    dest: /etc/modules-load.d/overlay.conf
