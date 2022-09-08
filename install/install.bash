@@ -53,7 +53,7 @@ w # Write to disk and exit
 Y
 EOF
 
-echo "SetuSetting up boot partition"
+echo "Setting up boot partition"
 mkfs.fat "$PARTITION_BOOT"
 
 echo "Setting up the encrypted LUKS partition"
