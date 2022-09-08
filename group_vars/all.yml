@@ -62,11 +62,11 @@ desktop_apps:
 desktop_apps_aur:
   base:
     - name: google-chrome
-      hash: f578dc4fe99b956b6011dde41fa68de88509bc3c
+      hash: 9fe4701d73b150015febf5bf0c180c5306f73842
     - name: autojump
-      hash: 7420b6f15d261578cc019b2ba06b5e6356b727ae
+      hash: df746683f29a323beea8bc233cbfb7efb8f53a6a
     - name: ulauncher
-      hash: ddf460dcc5ea1bcd37ae0ba224c5d9351c10c717
+      hash: b2cdeda7b8f5a893ce622f45847c832115e62cf1
 # To update this list, use `code --list-extensions`
 vscode_extensions:
   - ms-python.python

@@ -1,7 +1,7 @@
 - name: Install code
   aur:
     name: visual-studio-code-bin
-    hash: 832576b3e899336ef7c58fcfa62600080a8cf9c6
+    hash: fde93fc7fdcaa83ffaa55d2c88fa69516e6a7158
     user: "{{ user.name }}"
 
 - name: Installing extensions
