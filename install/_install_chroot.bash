@@ -37,7 +37,7 @@ initrd	/installs/EDGE/initramfs-linux.img
 options cryptdevice=UUID=$PARTITION_ROOT_UUID:crypted root=/dev/mapper/crypted rootflags=subvol=@snapshots/EDGE rw quiet" >  /.efi/loader/entries/EDGE.conf
 
 echo "timeout 3
-default EDGE
+default EDGE.conf
 editor no" > /.efi/loader/loader.conf
 
 echo "Generate initial ramdisk environment"
