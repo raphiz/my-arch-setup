@@ -7,6 +7,8 @@
 
 import os
 import pwd
+import grp
+import pwd
 import shutil
 import urllib.request
 import json
@@ -50,6 +52,9 @@ def download_package(module, base_pkg, pkg_dir, hash, user):
     os.mkdir(pkg_dir)
     os.chmod(pkg_dir, 0o777)
     os.chdir(pkg_dir)
+    uid = pwd.getpwnam(user).pw_uid
+    gid = grp.getgrnam(user).gr_gid
+    os.chown(pkg_dir, uid, gid)
 
     rc, stdout, stderr = module.run_command(
         'sudo -u %s git clone https://aur.archlinux.org/%s.git .' % (
