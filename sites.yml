@@ -4,7 +4,11 @@
 
     - { role: xorg, tags: ["xorg"] }
     - { role: lightdm, tags: ["lightdm"] }
-    - { role: intel-graphics, tags: ["intel-graphics"] }
+    - {
+        role: intel-graphics,
+        tags: ["intel-graphics"] ,
+        when: features is defined and "intel-graphics" in features
+      }
 
     - { role: nettools, tags: ["nettools"] }
     - { role: networkmanager, tags: ["networkmanager"] }
