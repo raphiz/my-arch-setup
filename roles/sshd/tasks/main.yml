@@ -1,0 +1,17 @@
+- name: Ensure OpenSSH is installed
+  pacman:
+    name: openssh
+    state: present
+
+- name: Push OpenSSH daemon configuration file
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+  notify:
+    - restart sshd
+
+- name: Enable and start OpenSSH
+  service:
+    name: sshd.service
+    enabled: yes
+    state: started

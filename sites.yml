@@ -31,6 +31,11 @@
     - { role: spell, tags: ["spell"] }
     - { role: node, tags: ["node"] }
     - { role: redshift, tags: ["redshift"] }
+    - {
+        role: sshd,
+        tags: ["sshd"],
+        when: features is defined and "sshd" in features,
+      }
     - { role: yubikey, tags: ["yubikey"] }
     - { role: vscode, tags: ["vscode"] }
     - { role: virtualbox, tags: ["virtualbox"] }
