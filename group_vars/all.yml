@@ -70,29 +70,45 @@ desktop_apps_aur:
       hash: b2cdeda7b8f5a893ce622f45847c832115e62cf1
 # To update this list, use `code --list-extensions`
 vscode_extensions:
-  - ms-python.python
-  - ms-vscode.vscode-typescript-tslint-plugin
+
+
+  # Markdown
   - DavidAnson.vscode-markdownlint
+  - mushan.vscode-paste-image
+
+  # Spell checkers
+  - streetsidesoftware.code-spell-checker
+  - streetsidesoftware.code-spell-checker-german
   - adamvoss.vscode-languagetool
   - adamvoss.vscode-languagetool-de
   - adamvoss.vscode-languagetool-en
-  - esbenp.prettier-vscode
+
+  # Other editor goodies
+  - EditorConfig.EditorConfig
+  - GitHub.github-vscode-theme
   - mikeburgh.xml-format
+  - redhat.vscode-yaml
+  - VisualStudioExptTeam.vscodeintellicode
+  - ms-azuretools.vscode-docker
+
+  # Web development
+  - esbenp.prettier-vscode
+  - humao.rest-client
+  - ms-vscode.vscode-typescript-tslint-plugin
   - octref.vetur
-  - coolbear.systemd-unit-file
-  - streetsidesoftware.code-spell-checker
-  - streetsidesoftware.code-spell-checker-german
+
+  # Work on remote hosts 🥳
+  - ms-vscode-remote.remote-ssh
+  - ms-vscode-remote.remote-ssh-edit
+
+  # Python
+  - ms-python.python
+  - ms-python.vscode-pylance
+
+  # Linux and shell stuff
   - timonwong.shellcheck
   - foxundermoon.shell-format
-  - dhoeric.ansible-vault
-  - vscoss.vscode-ansible
-  - EditorConfig.EditorConfig
-  - VisualStudioExptTeam.vscodeintellicode
-  - redhat.vscode-yaml
-  - ms-azuretools.vscode-docker
-  - github.github-vscode-theme
-  - mathiasfrohlich.kotlin
-  - ms-python.vscode-pylance
+  - coolbear.systemd-unit-file
 
 
 dotfiles: git@github.com:raphiz/dotfiles.git
