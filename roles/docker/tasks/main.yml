@@ -24,6 +24,11 @@
     path: hosts/files/{{inventory_hostname}}/docker/daemon.json
   register: stat_result
 
+- name: Ensure /etc/docker exists
+  file:
+    path: /etc/docker
+    state: directory
+
 - name: Copy daemon.json for this host
   copy:
     src: hosts/files/{{inventory_hostname}}/docker/daemon.json
