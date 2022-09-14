@@ -25,7 +25,7 @@ dd bs=4M if=archlinux-2018.04.01-x86_64.iso of=/dev/sdX oflag=sync
 
 ## Base System Installation
 
-DISCLAIMER: Note that this installation script was tested with the Arch Linux installation image from 2021-06-01. Manual intervention for newer images might be required.
+DISCLAIMER: Note that this installation script was tested with the Arch Linux installation image from 2022-09-03. Manual intervention for newer images might be required.
 
 ```bash
 # Verify boot mode is EFI
