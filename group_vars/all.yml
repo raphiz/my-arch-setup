@@ -132,9 +132,8 @@ base_fonts:
   - ttf-ubuntu-font-family
 
 aur_fonts:
+  # Does not work initially...run `yay ttf-symbola`
   - name: ttf-symbola
     hash: 41b127010d6033e7d8de4e0e6d3c1408a07ca5fd
-  - name: ttf-windows
-    hash: e61fd6492fa0e94b4918778e7f5ec3bca9f2525a
   - name: ttf-ms-fonts
     hash: 4b3621d776c7090b7d42ff53e1aa0170e16477e5
