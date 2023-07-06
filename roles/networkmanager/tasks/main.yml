@@ -34,6 +34,16 @@
     name: avahi-daemon.service
     enabled: yes
 
+- name: Enable systemd-resolved
+  service:
+    name: systemd-resolved.service
+    enabled: yes
+
+- name: Use systemd-resolved as a DNS resolver and cache
+  copy:
+    src: dns.conf
+    dest: /etc/NetworkManager/conf.d/dns.conf
+
 - name: Enable NetworkManager
   service:
     name: NetworkManager.service
