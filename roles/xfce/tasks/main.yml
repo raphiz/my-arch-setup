@@ -23,6 +23,7 @@
       - xfce4-time-out-plugin
       - xfce4-whiskermenu-plugin
       - xfce4-pulseaudio-plugin
+      - flameshot
       - gnome-keyring
       - gvfs
       - gvfs-smb
