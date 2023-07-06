@@ -50,6 +50,7 @@ desktop_apps:
     - vlc
     - audacious
   sytem:
+    - starship
     - wget
     - htop
     - gparted
